@@ -20,17 +20,6 @@ export default async function CollectionPage({
   return (
     <main className="min-h-screen bg-background">
       <Header />
-      
-      {/* Page Header */}
-      <section className="pt-32 pb-16 px-6">
-        <div className="max-w-screen-2xl mx-auto text-center">
-          <h1 className="text-xs tracking-[0.3em] uppercase text-muted-foreground">
-            Collection
-          </h1>
-        </div>
-      </section>
-
-      {/* Products Section */}
       <CollectionContent products={products} selectedCategory={selectedCategory} />
 
       <Footer />
