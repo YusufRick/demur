@@ -14,8 +14,6 @@ export function Footer() {
           </div>
 
          
-
-          {/* Info */}
           {/* Info */}
 <div>
   <h4 className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4">Info</h4>

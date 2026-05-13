@@ -9,6 +9,7 @@ export interface Product {
   is_featured: boolean
   sizes: string[]
   is_available: boolean
+  shopify_variant_id: string | null 
   created_at: string
   updated_at: string
 }

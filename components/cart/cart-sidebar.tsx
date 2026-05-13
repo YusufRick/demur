@@ -1,18 +1,33 @@
 "use client"
 
+import { useState } from 'react'
 import { useCart } from '@/lib/context/cart-context'
 import { X, Minus, Plus, ShoppingBag } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { buildShopifyCheckoutUrl } from '@/lib/shopify/checkout'
+import { createShopifyCheckout } from '@/lib/shopify/checkout'  // ✅ CHANGED: buildShopifyCheckoutUrl → createShopifyCheckout
 
 export function CartSidebar() {
   const { items, isOpen, closeCart, removeItem, updateQuantity, totalItems, totalPrice } = useCart()
+  const [isLoading, setIsLoading] = useState(false)  // ✅ ADDED
 
-  const handleCheckout = () => {
+  // ✅ CHANGED: now async, calls Storefront API instead of building a URL
+  const handleCheckout = async () => {
     if (items.length === 0) return
-    
-    const checkoutUrl = buildShopifyCheckoutUrl(items)
-    window.open(checkoutUrl, '_blank')
+
+    setIsLoading(true)
+    try {
+      const checkoutUrl = await createShopifyCheckout(items)
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl
+      } else {
+        alert('Checkout unavailable. Please try again.')
+      }
+    } catch (error) {
+      console.error('Checkout error:', error)
+      alert('Something went wrong. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   if (!isOpen) return null
@@ -20,11 +35,11 @@ export function CartSidebar() {
   return (
     <>
       {/* Backdrop */}
-      <div 
+      <div
         className="fixed inset-0 bg-black/60 z-40"
         onClick={closeCart}
       />
-      
+
       {/* Sidebar */}
       <div className="fixed right-0 top-0 h-full w-full max-w-md bg-background border-l border-white/10 z-50 flex flex-col">
         {/* Header */}
@@ -35,7 +50,7 @@ export function CartSidebar() {
               Cart ({totalItems})
             </span>
           </div>
-          <button 
+          <button
             onClick={closeCart}
             className="p-2 hover:bg-white/5 transition-colors"
           >
@@ -60,7 +75,7 @@ export function CartSidebar() {
                       {item.product.category?.toUpperCase()}
                     </span>
                   </div>
-                  
+
                   {/* Product Info */}
                   <div className="flex-1 flex flex-col">
                     <div className="flex justify-between items-start">
@@ -81,7 +96,7 @@ export function CartSidebar() {
                         <X className="w-4 h-4" />
                       </button>
                     </div>
-                    
+
                     <div className="mt-auto flex items-center justify-between">
                       {/* Quantity Controls */}
                       <div className="flex items-center border border-white/20">
@@ -99,7 +114,7 @@ export function CartSidebar() {
                           <Plus className="w-3 h-3" />
                         </button>
                       </div>
-                      
+
                       <span className="text-sm font-medium">
                         ${(Number(item.product.price) * item.quantity).toFixed(2)}
                       </span>
@@ -121,11 +136,13 @@ export function CartSidebar() {
             <p className="text-xs text-muted-foreground">
               Shipping and taxes calculated at checkout
             </p>
-            <Button 
+            
+            <Button
               onClick={handleCheckout}
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-sm tracking-widest uppercase"
+              disabled={isLoading}
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-sm tracking-widest uppercase disabled:opacity-50"
             >
-              Checkout
+              {isLoading ? 'Redirecting...' : 'Checkout'}
             </Button>
           </div>
         )}

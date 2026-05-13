@@ -12,7 +12,6 @@ export default async function HomePage() {
     <main className="min-h-screen">
       <Header />
       <HeroSection />
-      <FeaturedSection products={featuredProducts} />
       <BannerSection />
       <Footer />
     </main>
