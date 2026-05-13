@@ -16,13 +16,11 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
       
       {/* Product Info */}
-      <div className="space-y-1">
+      <div className="space-y-1 text-center">
         <h3 className="text-xs tracking-[0.15em] uppercase text-foreground group-hover:text-primary transition-colors">
           {product.name}
         </h3>
-        <p className="text-xs text-muted-foreground">
-          ${Number(product.price).toFixed(0)}
-        </p>
+
       </div>
     </Link>
   )

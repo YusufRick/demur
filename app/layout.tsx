@@ -11,7 +11,6 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: 'DEMUR | Official Store',
   description: 'Elevated essentials. Uncompromising quality. Shop the latest DEMUR collection.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
