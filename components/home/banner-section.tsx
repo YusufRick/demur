@@ -29,7 +29,7 @@ export function BannerSection() {
           </Link>
 
           <a
-            href="mailto:hello@demur.my"
+            href="demurrr.co@gmail.com"
             className="inline-block border border-border text-foreground px-12 py-4 text-xs tracking-[0.3em] uppercase hover:border-primary hover:text-primary transition-colors"
           >
             Custom Order
