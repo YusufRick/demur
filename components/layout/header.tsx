@@ -8,7 +8,6 @@ import { useCart } from '@/lib/context/cart-context'
 const categories = [
   { name: 'All', href: '/collection' },
   { name: 'Footwear', href: '/collection?category=footwear' },
-  { name: 'Apparel', href: '/collection?category=apparel' },
   { name: 'Jackets', href: '/collection?category=jacket' },
   { name: 'Pants', href: '/collection?category=pants' },
 ]
@@ -21,7 +20,7 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-white/5">
       <nav className="flex items-center justify-between px-6 py-4 max-w-screen-2xl mx-auto">
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold tracking-[0.3em] text-foreground hover:text-primary transition-colors">
+        <Link href="/" className="text-xl font-bold tracking-[0.3em] text-red-500 hover:text-primary transition-colors">
           DEMUR
         </Link>
 
@@ -31,7 +30,7 @@ export function Header() {
             <Link 
               key={category.name}
               href={category.href} 
-              className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+              className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-red-500 transition-colors"
             >
               {category.name}
             </Link>
@@ -73,7 +72,7 @@ export function Header() {
                 key={category.name}
                 href={category.href} 
                 onClick={() => setIsMenuOpen(false)}
-                className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+                className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-red-500 transition-colors"
               >
                 {category.name}
               </Link>

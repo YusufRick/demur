@@ -13,53 +13,24 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4">Shop</h4>
-            <ul className="flex flex-col gap-3">
-              <li>
-                <Link href="/collection" className="text-xs text-foreground hover:text-primary transition-colors">
-                  All Products
-                </Link>
-              </li>
-              <li>
-                <Link href="/collection?category=footwear" className="text-xs text-foreground hover:text-primary transition-colors">
-                  Footwear
-                </Link>
-              </li>
-              <li>
-                <Link href="/collection?category=apparel" className="text-xs text-foreground hover:text-primary transition-colors">
-                  Apparel
-                </Link>
-              </li>
-              <li>
-                <Link href="/collection?category=jacket" className="text-xs text-foreground hover:text-primary transition-colors">
-                  Jackets
-                </Link>
-              </li>
-              <li>
-                <Link href="/collection?category=pants" className="text-xs text-foreground hover:text-primary transition-colors">
-                  Pants
-                </Link>
-              </li>
-            </ul>
-          </div>
+         
 
           {/* Info */}
-          <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4">Info</h4>
-            <ul className="flex flex-col gap-3">
-              <li>
-                <span className="text-xs text-muted-foreground">Shipping</span>
-              </li>
-              <li>
-                <span className="text-xs text-muted-foreground">Returns</span>
-              </li>
-              <li>
-                <span className="text-xs text-muted-foreground">Contact</span>
-              </li>
-            </ul>
-          </div>
+          {/* Info */}
+<div>
+  <h4 className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4">Info</h4>
+  <ul className="flex flex-row gap-6">
+    <li>
+      <span className="text-xs text-muted-foreground hover:text-red-500 transition-colors cursor-pointer">Shipping</span>
+    </li>
+    <li>
+      <span className="text-xs text-muted-foreground hover:text-red-500 transition-colors cursor-pointer">Returns</span>
+    </li>
+    <li>
+      <span className="text-xs text-muted-foreground hover:text-red-500 transition-colors cursor-pointer">Contact</span>
+    </li>
+  </ul>
+</div>
         </div>
 
         <div className="border-t border-white/5 mt-16 pt-8">
