@@ -45,7 +45,7 @@ export function ProductView({ product }: ProductViewProps) {
           className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors mb-12"
         >
           <ChevronLeft className="w-4 h-4" />
-          Back to Collection
+          Back 
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">

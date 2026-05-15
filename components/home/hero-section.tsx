@@ -1,13 +1,19 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-background">
-      {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.2em] text-foreground mb-6">
-          DEMUR
-        </h1>
+        
+        <Image
+          src="/Demur_Logo.jpg"
+          alt="DEMUR"
+          width={400}
+          height={120}
+          className="h-48 w-auto object-contain mx-auto mb-6"
+        />
+
         <p className="text-sm md:text-base tracking-[0.3em] uppercase text-muted-foreground mb-12">
           Elevated Essentials
         </p>

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Menu, X, ShoppingBag } from 'lucide-react'
 import { useCart } from '@/lib/context/cart-context'
+import Image from 'next/image'
 
 const categories = [
   { name: 'All', href: '/collection' },
@@ -17,19 +18,26 @@ export function Header() {
   const { totalItems, toggleCart } = useCart()
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-white/5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <nav className="flex items-center justify-between px-6 py-4 max-w-screen-2xl mx-auto">
+
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold tracking-[0.3em] text-red-500 hover:text-primary transition-colors">
-          DEMUR
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/Demur_Logo.jpg"
+            alt="DEMUR"
+            width={100}
+            height={32}
+            className="h-12 w-auto object-contain"
+          />
         </Link>
 
-        {/* Desktop Navigation - Categories */}
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {categories.map((category) => (
-            <Link 
+            <Link
               key={category.name}
-              href={category.href} 
+              href={category.href}
               className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-red-500 transition-colors"
             >
               {category.name}
@@ -41,7 +49,7 @@ export function Header() {
         <div className="flex items-center gap-4">
           <button
             onClick={toggleCart}
-            className="relative p-2 text-foreground hover:text-primary transition-colors"
+            className="relative p-2 text-foreground hover:text-red-500 transition-colors"
             aria-label="Open cart"
           >
             <ShoppingBag size={20} />
@@ -52,10 +60,9 @@ export function Header() {
             )}
           </button>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-foreground hover:text-red-500 transition-colors"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -65,12 +72,12 @@ export function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-white/5">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border">
           <div className="flex flex-col px-6 py-4 gap-4">
             {categories.map((category) => (
-              <Link 
+              <Link
                 key={category.name}
-                href={category.href} 
+                href={category.href}
                 onClick={() => setIsMenuOpen(false)}
                 className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-red-500 transition-colors"
               >
